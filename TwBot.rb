@@ -45,8 +45,7 @@ class TwBot
         @replyThread = Thread.new do
             begin
                 @timeline.userstream do |status|
-                    contents = status.text
-                    if contents =~ /^#{screen_name}\s*/
+                    if status.text =~ /^#{screen_name}\s*/
                         yield(@client, status)
                     end
                     sleep 2
