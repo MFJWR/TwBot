@@ -6,7 +6,7 @@ bot.setTimerAction(15) do |client|
     client.update(Time.now.strftime("%T"))
 end
 
-bot.setReplyAction("@your_screen_name") do |client, status|
+bot.setReplyAction do |client, status|
     client.update("got a reply from @#{status.user.screen_name} at #{Time.now.strftime("%T")}", {:in_reply_to_status_id => status.id})
 end
 

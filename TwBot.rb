@@ -41,11 +41,11 @@ class TwBot
         end
     end
 
-    def setReplyAction(screen_name, &block)
+    def setReplyAction(&block)
         @replyThread = Thread.new do
             begin
                 @timeline.userstream do |status|
-                    if status.text =~ /^#{screen_name}\s*/
+                    if status.text =~ /^@#{@client.settings.screen_name}\s*/
                         yield(@client, status)
                     end
                     sleep 2
